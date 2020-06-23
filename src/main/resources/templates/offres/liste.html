@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org" >
+<head>
+	<meta charset="UTF-8"/>
+	<title>Offres</title>
+	<link rel="stylesheet" type="text/css" th:href="@{../../css/bootstrap.min.css}"/>
+	<link href="../public/https:/fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+	<h2 style="text-align:center">Gestion des offres de l'emploi</h2>
+	<br/>
+	 <div class="nav navbar-default" >
+		 	<ul class="nav navbar-nav">
+		 		<li><a th:href="@{/Offre/liste}">Offre d'emploi</a></li>
+		 		<li><a th:href="@{/Candidat/liste}">Demande d'emploi</a></li>
+				<!--li><a th:href="@{/Offre/listeoffre}">Voir offres</a></li-->
+		 		<!--li><a th:href="@{/Candidat/listedemande}">Voir demandes</a></li-->		 		
+		 		<li><a th:href="@{/Candidat/logout}" th:inline="text" style="color: red;"> [[${#httpServletRequest.remoteUser}]] Deconnexion</a></li>
+		 	</ul>
+		</div>
+		<br/><br/>
+		<div class="container col-sm-6 col-md-8" >
+		<div class="panel panel-primary">
+			<div class="panel-heading" style="text-align:center;font-size:2em">Liste des offres</div>
+			<div class="panel-body">
+			<table class="table table-striped table-bordered">
+					<tr >
+						<th style="text-align:center">Identifiant</th>
+						<th style="text-align:center">Nom Entreprise</th>
+						<th style="text-align:center">Titre poste</th>
+						<th style="text-align:center">Description</th>
+						<th style="text-align:center">Action</th>
+							
+					</tr>			
+					<tr th:each="of:${liste_offres}">
+						<td th:text="${of.id}"></td>
+						<td th:text="${of.nomEntreprise}"></td>
+						<td th:text="${of.titreposte}"></td>
+						<td th:text="${of.description}"></td>						
+						<!--td><a th:href="@{/Offre/edit(id=${of.id})}">Update</a></td-->
+						<td><a th:href="@{/Offre/delete(id=${of.id})}">Delete</a></td>
+					</tr>
+				</table>
+			</div>
+			</div>
+		</div> 	
+		
+</body>
+
+</html>

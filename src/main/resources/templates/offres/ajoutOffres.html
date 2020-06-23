@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org" >
+<head>
+	<meta charset="UTF-8"/>
+	<title>Ajout offre</title>
+	<link rel="stylesheet" type="text/css" th:href="@{../css/bootstrap.min.css}"/>
+</head>
+<body>
+	<h2 style="text-align:center">Gestion des offres de l'emploi</h2>
+	<br/>
+	 <div class="nav navbar-default" >
+		 	<ul class="nav navbar-nav">
+				 <li><a th:href="@{/Offre/liste}">Offre d'emploi</a></li>				 
+		 		<li><a th:href="@{/Candidat/liste}">Demande d'emploi</a></li>
+				<!--li><a th:href="@{/Offre/listeoffre}">Voir offres</a></li-->
+		 		<!--li><a th:href="@{/Candidat/listedemande}">Voir demandes</a></li-->
+		 		
+		 		<li><a th:href="@{/Candidat/logout}" th:inline="text" style="color: red;"> [[${#httpServletRequest.remoteUser}]] Deconnexion</a></li>
+		 	</ul>
+		</div>
+		<br/><br/>
+
+		<div class="container col-sm-6 col-md-4" >
+		<div class="panel panel-primary">
+			<div class="panel-heading" style="text-align:center;font-size:2em">Annoncez une offre</div>
+			<div class="panel-body">
+			<form method="POST" th:action="@{/Offre/add}" th:object="${offres}">
+		 				<div class="from-group">
+		 					<label class="from-label">N° Offre</label>
+		 					<input class="form-control" type="text" name="id"  />
+		 				</div>
+		 						
+		 				<div class="from-group">
+		 					<label class="from-label">Nom de l'Entreprise</label>
+		 					<input class="form-control" type="text" name="nomEntreprise"/>
+		 				</div>
+		 				<div class="from-group">
+		 					<label class="from-label">Titre du poste</label>
+		 					<input class="form-control" type="text" name="titreposte" />
+		 				</div>
+		 				
+		 				<div class="from-group">
+		 					<label class="from-label">Description</label>
+							<textarea class="form-control" type="text" name="description" ></textarea>
+		 					
+		 				</div>
+		 				
+		 				<div class="from-group">
+		 					<input class="btn btn-success" type="submit" name="valider" value="Valider" />		 					
+		 					<input class="btn btn-danger" type="reset" name="annuler" value="Annuler" />
+		 				</div>
+		 			</form>
+			</div>
+			
+		</div>
+		
+	</div>
+	
+	<div class="panel-footer">	
+		<div class="panel-footer" style="text-align: center;font-size: 1.5em;">Author safibra Diallo</div>
+	</div>	 
+		 
+</body>
+
+</html>

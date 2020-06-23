@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org" >
+<head>
+	<meta charset="UTF-8"/>
+	<title>Candidature</title>
+	<link rel="stylesheet" type="text/css" th:href="@{../css/bootstrap.min.css}"/>
+</head>
+<body>
+	 <div class="nav navbar-default">
+		 	<ul class="nav navbar-nav">
+		 		<li><a th:href="@{/Offre/liste}">Offre d'emploi</a></li>
+		 		<li><a th:href="@{/Candidat/liste}">Demande d'emploi</a></li>
+				<li><a th:href="@{/Offre/listeoffre}">Voir offres</a></li>
+		 		<li><a th:href="@{/Candidat/listedemande}">Voir demandes</a></li>		 		
+		 		<li><a th:href="@{/Candidat/logout}" th:inline="text" style="color: red;"> [[${#httpServletRequest.remoteUser}]] Deconnexion</a></li>
+		 	</ul>
+		</div>
+				
+	<div class="container col-sm-12 col-md-12" >
+		<div class="panel panel-primary">
+			<div class="panel-heading" style="text-align:center;font-size: 2em;">Liste des offres</div>
+			<div class="panel-body">
+			<table class="table table-striped table-bordered">
+					<tr>
+						<th>Identifiant</th>
+						<th>Nom Entreprise</th>
+						<th>Titre poste</th>
+						<th>Description</th>
+						<th>Action</th>
+					</tr>			
+					<tr th:each="o:${liste_offres}">
+						<td th:text="${o.id}"></td>
+						<td th:text="${o.nomEntreprise}"></td>
+						<td th:text="${o.titreposte}"></td>
+						<td th:text="${o.description}"></td>
+						<td><a th:href="@{/Candidat/liste}">Postulez</a></td>
+
+					</tr>
+				</table>
+			</div>
+			</div>
+		</div>
+			
+	<div class="panel-footer">	
+		<div class="panel-footer" style="text-align: center;font-size: 1.5em;">Author safibra Diallo</div>
+	</div>	 
+</body>
+
+</html>

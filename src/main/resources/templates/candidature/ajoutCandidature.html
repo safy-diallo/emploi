@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org" >
+<head>
+	<meta charset="UTF-8"/>
+	<title>Candidature</title>
+	<link rel="stylesheet" type="text/css" th:href="@{../../css/bootstrap.min.css}"/>
+</head>
+
+<body>
+	<h2 text-align:center>Gestion des demandes d'emploi</h2>
+	 <div class="nav navbar-default">
+		 	<ul class="nav navbar-nav">
+				<li><a th:href="@{/Offre/listeoffre}">Voir offres</a></li>
+		 		<li><a th:href="@{/uploadOneFile}">Telecharger CV</a></li>
+		 		<li><a th:href="@{/Candidat/logout}" th:inline="text" style="color: red;"> [[${#httpServletRequest.remoteUser}]] Deconnexion</a></li>
+		 	</ul>
+		</div>
+	<div class="container col-sm-9 col-md-4" >
+		<div class="panel panel-primary">
+			<div class="panel-heading" style="text-align:center;font-size:2em">Tentez votre chance</div>
+			<div class="panel-body" style=" margin: 20px;">
+			<form method="POST" th:action="@{/Candidat/add}" th:object="${candidat}">
+		 				<div class="from-group">
+		 					<label class="from-label">Identifiant</label>
+		 					<input class="form-control" type="text" name="id" />
+		 				</div>
+		 						
+		 				<div class="from-group">
+		 					<label class="from-label">Nom</label>
+		 					<input class="form-control" type="text" name="nom" />
+		 				</div>
+		 				<div class="from-group">
+		 					<label class="from-label">Prénom</label>
+		 					<input class="form-control" type="text" name="prenom"  />
+		 				</div>
+		 				<!-- div class="from-group">
+		 					<label class="from-label">Date</label>
+		 					<input class="form-control" type="Date" name="date" />
+		 				</div> -->
+		 				<div class="from-group">
+		 					<label class="from-label">Expérience</label>
+		 					<input class="form-control" type="text" name="experience"  />
+		 				</div>
+		 				<div class="from-group">
+		 					<label class="from-label">Niveau d'étude</label>
+		 					<input class="form-control" type="text" name="niveauEtude"  />
+		 				</div>
+		 				<div class="from-group">
+		 					<label class="from-label">Disponibilité</label>
+		 					<input class="form-control" type="text" name="Disponibilite"  />
+		 				</div>
+		 				<div class="from-group">
+		 					<label class="from-label">Motivation</label>
+		 					<textarea class="form-control" type="text" name="motivation"  ></textarea>
+						 </div>
+						 <br/>
+		 				<div class="from-group">
+		 					<input class="btn btn-success" type="submit" name="valider" value="Valider" />		 					
+		 					<input class="btn btn-danger" type="reset" name="annuler" value="Annuler" />
+		 				</div>
+		 			</form>
+			</div>
+			
+		</div>
+		
+	</div>
+</body>
+
+</html>
